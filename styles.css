@@ -1,0 +1,296 @@
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  min-height: 100vh;
+  background-color: #fafafa;
+  color: #262626;
+  padding-bottom: 3rem;
+}
+
+header {
+    background-color: #FEFEFE;
+    color: #353535;
+    text-align: center;
+    padding: 20px;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+  footer {
+            background-color: #FEFEFE;
+            text-align: center;
+            padding: 20px;
+           
+            bottom: 0;
+            width: 100%;
+        }
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.column {
+    flex: 1;
+    margin: 10px;
+}
+
+img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
+
+/* Social Links */
+.social-links {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-links img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Navbar Styles */
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.navbar li a {
+    color: #BCBBBB;
+    text-decoration: none;
+}
+
+.navbar li a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Form Styles */
+.contact-form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form label,
+.contact-form input,
+.contact-form textarea {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Contact Container Styles */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-details, .contact-form {
+    flex: 1;
+    padding: 10px;
+}
+
+.contact-info {
+    margin-bottom: 20px;
+}
+
+/* Video Styles */
+.square-video-container {
+    position: relative;
+    width: 300px;
+    padding-top: 300px; /* 1:1 aspect ratio (height = width) */
+    overflow: hidden;
+}
+
+.column {
+    flex: 1;
+    margin: 10px;
+    position: relative; /* Add this line to position videos like photos */
+}
+
+/* Video Styles */
+.square-video {
+    position: absolute; /* Position videos absolutely within the column */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crop the video to cover the container */
+}
+/* Rounded Corners for Images and Videos */
+
+.profile-picture.rounded {
+  border-radius: 50%;
+}
+/* Style the profile header container */
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff; /* Add your desired background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the profile picture */
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* Style the profile info */
+.profile-info {
+    text-align: center;
+}
+
+/* Style the profile name */
+.profile-name {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* Style the profile bio */
+.profile-bio {
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Style the profile statistics */
+.profile-stats {
+    margin-top: 10px;
+}
+
+/* Style the navigation bar */
+.navbar {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px; /* Add space on top as needed */
+}
+
+.navbar li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #333; /* Add your desired text color */
+    font-weight: bold;
+}
+
+	.profile {
+  padding: 5rem 0;
+}
+
+.profile::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.profile-image {
+  float: left;
+  width: calc(33.333% - 1rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 3rem;
+}
+
+.profile-image img {
+  border-radius: 50%;
+}
+
+.profile-user-settings,
+.profile-stats,
+.profile-bio {
+  float: left;
+  width: calc(66.666% - 2rem);
+}
+
+.profile-user-settings {
+  margin-top: 1.1rem;
+}
+
+.profile-user-name {
+  display: inline-block;
+  font-size: 3.2rem;
+  font-weight: 300;
+}
+
+.profile-edit-btn {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  border: 0.1rem solid #dbdbdb;
+  border-radius: 0.3rem;
+  padding: 0 2.4rem;
+  margin-left: 2rem;
+}
+
+.profile-settings-btn {
+  font-size: 2rem;
+  margin-left: 1rem;
+}
+
+.profile-stats {
+  margin-top: 2.3rem;
+}
+
+.profile-stats li {
+  display: inline-block;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  margin-right: 4rem;
+  cursor: pointer;
+}
+
+.profile-stats li:last-of-type {
+  margin-right: 0;
+}
+
+.profile-bio {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-top: 2.3rem;
+}
+
+.profile-real-name,
+.profile-stat-count,
+.profile-edit-btn {
+  font-weight: 600;
+}

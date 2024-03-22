@@ -1,0 +1,46 @@
+{
+  "games": [
+    {
+      "Title": "Микроны босс",
+      "ShortDescription": "Нэгэн цагт шугамд явж байсан нийтийн тээврийн жолоочийн аж амьдралыг өгүүлнэ...",
+      "GameDescription": "Хар хорин хананы материал гэж орилсоор зорчигчдоо суулгаж замдаа гараарай...",
+      "GameGenre": "Simulation",
+	  "AgeRating": "7",
+      "Price": "Онцгой",
+      "ThumbnailImageSource": "https://raw.githubusercontent.com/baaduubn/Micronii-boss/main/Screenshots/Screenshot%202024-03-05%20154832.png",
+      "ScreenShotSource1": "https://raw.githubusercontent.com/baaduubn/Micronii-boss/blob/main/Screenshots/Screenshot_2024-03-05_03-44-44.png",
+      "ScreenShotSource2": "https://raw.githubusercontent.com/baaduubn/Micronii-boss/blob/main/Screenshots/Screenshot_2024-03-05_03-45-00.png",
+      "ScreenShotSource3": "https://raw.githubusercontent.com/baaduubn/Micronii-boss/blob/main/Screenshots/Screenshot_2024-03-05_03-45-46.png",
+      "ScreenShotSource4": "https://raw.githubusercontent.com/baaduubn/Micronii-boss/blob/main/Screenshots/Screenshot%202024-03-05%20154832.png",
+      "repositoryUrl": "https://github.com/baaduubn/Micronii-boss"
+    },
+    {
+      "Title": "Үгийн сүлжээ",
+      "ShortDescription": "Үгийн сүлжээ бөглөж ухаанаа сориорой...",
+      "GameDescription": "Дэлхий хамгийн хурдан амьтанг мэдэх үү? 3 настай үхэрийг юу гэдгийг мэдэх үү?...",
+      "GameGenre": "Puzzle",
+	  "AgeRating": "7",
+      "Price": "Онцгой",
+      "ThumbnailImageSource": "https://raw.githubusercontent.com/baaduubn/ugiin-suljee/main/Screenshots/Screenshot_2024-03-06_12-45-00.png",
+      "ScreenShotSource1": "https://raw.githubusercontent.com/baaduubn/ugiin-suljee/blob/main/Screenshots/Screenshot_2024-03-06_12-45-14.png",
+      "ScreenShotSource2": "https://raw.githubusercontent.com/baaduubn/ugiin-suljee/blob/main/Screenshots/Screenshot_2024-03-06_12-45-22.png",
+      "ScreenShotSource3": "https://raw.githubusercontent.com/baaduubn/ugiin-suljee/blob/main/Screenshots/Screenshot_2024-03-06_12-45-40.png",
+      "ScreenShotSource4": "https://raw.githubusercontent.com/baaduubn/ugiin-suljee/blob/main/Screenshots/Screenshot_2024-03-06_12-45-40.png",
+      "repositoryUrl": "https://github.com/baaduubn/ugiin-suljee.git"
+    },
+    {
+      "Title": "Gingerdead man",
+      "ShortDescription": "This is a little Christmas game I made in 4 days. I hope you enjoy it!",
+      "GameDescription": "It is the night before Christmas. The sn.33132jjl j jkow is falling, the fire keeps you warm. Why not make a gingerbread man? What could go wrong? I'm sure Santa will L O V E this gingerbread man. Oh yes, he will really looooove it!",
+      "GameGenre": "Horror",
+	  "AgeRating": "7",
+      "Price": "Үнэгүй",
+      "ThumbnailImageSource": "https://img.itch.zone/aW1nLzE0Mjk1OTY0LnBuZw==/original/eHx0iR.png",
+      "ScreenShotSource1": "https://img.itch.zone/aW1hZ2UvMjQxNTAxMi8xNDI5NTYwMy5wbmc=/original/m7d2Ap.png",
+      "ScreenShotSource2": "https://img.itch.zone/aW1hZ2UvMjQxNTAxMi8xNDI5NTYwMi5wbmc=/original/7jv7xl.png",
+      "ScreenShotSource3": "https://img.itch.zone/aW1hZ2UvMjQxNTAxMi8xNDI5NTYyNC5wbmc=/original/HXEJ9s.png",
+      "ScreenShotSource4": "https://img.itch.zone/aW1hZ2UvMjQxNTAxMi8xNDI5NTYzMy5wbmc=/original/C07vGL.png",
+      "repositoryUrl": "https://github.com/baaduubn/Gingerdead-man"
+    }
+  ]
+}
