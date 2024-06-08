@@ -192,33 +192,34 @@
         <h1>TOP GAMES</h1>
         <div class="row">
             <div class="column">
-                <a id="link2" href="https://www.appbrain.com/app/save-the-town-3d/com.SaveTheTown.gp">
+                <a id="top1" href="https://www.appbrain.com/app/save-the-town-3d/com.SaveTheTown.gp">
                     <img src="images/SaveTheTown.png" alt="Save The Town">
                     <h3>Save The Town</h3>
                     <p>100k+ downloads</p>
                 </a>
             </div>
             <div class="column">
-                <a id="link1" href="https://play.google.com/store/apps/details?id=com.MangasGames.Mergeandfire">
+                <a id="top2" href="https://play.google.com/store/apps/details?id=com.MangasGames.Mergeandfire">
                     <img src="images/mergeandfire.png" alt="Merge and Fire">
                     <h3>Merge and Fire</h3>
                     <p>5k+ downloads</p>
                 </a>
             </div>
             <div class="column">
-                <a id="link6" href="https://play.google.com/store/apps/details?id=com.SuperGem.PaperPlease">
+                <a id="top3" href="https://play.google.com/store/apps/details?id=com.SuperGem.PaperPlease">
                     <img src="images/PaperPlease.png" alt="Paper Please">
                     <h3>Paper Please</h3>
                     <p>1k+ downloads</p>
                 </a>
             </div>
             <div class="column">
-                <a id="link5" href="https://play.google.com/store/apps/details?id=com.SUPERGEM.Stealthmaster">
+                <a id="top4" href="https://play.google.com/store/apps/details?id=com.SUPERGEM.Stealthmaster">
                     <img src="images/Stealthmaster.png" alt="Stealth Master">
                     <h3>Stealth Master</h3>
                     <p>100+ downloads</p>
                 </a>
             </div>
+
         </div>
         <h1>ALL GAMES</h1>
 
@@ -284,5 +285,26 @@
         </div>
         <p>&copy; 2024 SUPERGEM. All rights reserved.</p>
     </footer>
+    <script>function isiPhone() {
+            return /iPhone|iPod|Macintosh/i.test(navigator.userAgent);
+        }
+
+        function updateTopGameLinks() {
+            if (isiPhone()) {
+                document.getElementById("top1").href = "https://apps.apple.com/us/app/merge-and-fire/id6459738321";
+                document.getElementById("top2").href = "https://apps.apple.com/us/app/merge-and-fire/id6459738321";
+                document.getElementById("top3").href = "https://apps.apple.com/us/app/merge-and-fire/id6459738321";
+                document.getElementById("top4").href = "https://apps.apple.com/us/app/merge-and-fire/id6459738321";
+            } else {
+                document.getElementById("top1").href = "https://play.google.com/store/apps/details?id=com.MangasGames.Mergeandfire";
+                document.getElementById("top2").href = "https://www.appbrain.com/app/save-the-town-3d/com.SaveTheTown.gp";
+                document.getElementById("top3").href = "https://play.google.com/store/apps/details?id=com.SUPERGEM.Stealthmaster";
+                document.getElementById("top4").href = "https://play.google.com/store/apps/details?id=com.SuperGem.PaperPlease";
+            }
+        }
+
+        window.onload = updateTopGameLinks;</script>
+
+
 </body>
 </html>
