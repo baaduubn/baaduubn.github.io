@@ -32,19 +32,19 @@
             justify-content: center;
         }
 
-            .navbar li {
-                margin: 0 15px;
-            }
+        .navbar li {
+            margin: 0 15px;
+        }
 
-            .navbar a {
-                color: #ffffff;
-                text-decoration: none;
-                font-weight: bold;
-            }
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-                .navbar a:hover {
-                    text-decoration: underline;
-                }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
 
         main {
             padding: 20px;
@@ -60,14 +60,99 @@
             flex: 1 1 calc(25% - 40px);
             margin: 20px;
             box-sizing: border-box;
+            text-align: center; /* Center the text */
         }
 
-            .column img, .column video {
-                width: 100%;
-                height: auto;
-                border-radius: 50px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            }
+        .column img, .column video {
+            width: 100%;
+            height: auto;
+            border-radius: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .column h3 {
+            margin: 10px 0 5px; /* Add some spacing around the name */
+            font-size: 1.2em; /* Adjust the font size as needed */
+            color: #333333; /* Color of the game name */
+        }
+
+        .column p {
+            margin: 0;
+            font-size: 1em; /* Adjust the font size as needed */
+            color: #666666; /* Color of the download count */
+        }
+
+        .column a {
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        .long-box-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .long-box {
+            display: flex;
+            flex-direction: row; /* Change to row */
+            align-items: center;
+            justify-content: flex-start;
+            flex: 1 1 calc(33.33% - 40px);
+            margin: 20px;
+            box-sizing: border-box;
+            background-color: #fff;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+            padding: 20px;
+            text-align: left; /* Align text to the left */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow */
+        }
+
+        .long-box img {
+            margin-right: 20px; /* Add margin to the right of the image */
+            width: 80px;
+            height: 80px;
+            border-radius: 10%; /* Make the image round */
+        }
+
+        .long-box h3,
+        .long-box p {
+            margin: 0;
+            padding: 0;
+            text-align: left; /* Align text to the left */
+        }
+
+        .long-box a {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            text-decoration: none;
+            color: inherit;
+            width: 100%; /* Make link cover the entire box */
+        }
+
+        .long-box a:hover {
+            text-decoration: underline;
+        }
+
+        .long-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            opacity: 0.8; /* Reduce opacity on hover */
+        }
+
+        .star-rating {
+            display: flex;
+            align-items: center;
+        }
+
+        .star-rating img {
+            width: 10px; /* Adjust star size */
+            height: 10px;
+            margin-right: 2px; /* Space between stars */
+        }
 
         footer {
             margin-top: 40px;
@@ -81,15 +166,15 @@
             margin-bottom: 20px;
         }
 
-            .social-links a {
-                margin: 0 10px;
-                display: inline-block;
-            }
+        .social-links a {
+            margin: 0 10px;
+            display: inline-block;
+        }
 
-            .social-links img {
-                width: 30px;
-                height: 30px;
-            }
+        .social-links img {
+            width: 30px;
+            height: 30px;
+        }
     </style>
 </head>
 <body>
@@ -104,54 +189,92 @@
     </header>
 
     <main>
+        <h1>TOP GAMES</h1>
         <div class="row">
-            <div class="column">
-                <a id="link1" href="https://play.google.com/store/apps/details?id=com.MangasGames.Mergeandfire">
-                    <img src="images/mergeandfire.png" alt="Merge and Fire">
-                </a>
-            </div>
             <div class="column">
                 <a id="link2" href="https://www.appbrain.com/app/save-the-town-3d/com.SaveTheTown.gp">
                     <img src="images/SaveTheTown.png" alt="Save The Town">
+                    <h3>Save The Town</h3>
+                    <p>100k+ downloads</p>
                 </a>
             </div>
             <div class="column">
-                <a id="link3" href="https://play.google.com/store/apps/details?id=com.ryzeneo.Mongolmeme">
-                    <img src="images/meme.png" alt="Mongol Meme">
-                </a>
-            </div>
-            <div class="column">
-                <a id="link4" href="https://play.google.com/store/apps/details?id=com.SUPERGEM.Packingmasterpuzzle">
-                    <img src="images/Packingmasterpuzzle.png" alt="Packing Master Puzzle">
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="column">
-                <a id="link5" href="https://play.google.com/store/apps/details?id=com.SUPERGEM.Stealthmaster">
-                    <img src="images/Stealthmaster.png" alt="Stealth Master">
+                <a id="link1" href="https://play.google.com/store/apps/details?id=com.MangasGames.Mergeandfire">
+                    <img src="images/mergeandfire.png" alt="Merge and Fire">
+                    <h3>Merge and Fire</h3>
+                    <p>5k+ downloads</p>
                 </a>
             </div>
             <div class="column">
                 <a id="link6" href="https://play.google.com/store/apps/details?id=com.SuperGem.PaperPlease">
                     <img src="images/PaperPlease.png" alt="Paper Please">
+                    <h3>Paper Please</h3>
+                    <p>1k+ downloads</p>
                 </a>
             </div>
             <div class="column">
-                <a id="link7" href="https://play.google.com/store/apps/details?id=com.ryzeneo.Mongolmeme">
-                    <img src="images/meme.png" alt="Mongol Meme">
-                </a>
-            </div>
-            <div class="column">
-                <a id="link8" href="https://example.com">
-                    <video class="square-video" autoplay muted loop>
-                        <source src="mergeandfire.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                <a id="link5" href="https://play.google.com/store/apps/details?id=com.SUPERGEM.Stealthmaster">
+                    <img src="images/Stealthmaster.png" alt="Stealth Master">
+                    <h3>Stealth Master</h3>
+                    <p>100+ downloads</p>
                 </a>
             </div>
         </div>
+        <h1>ALL GAMES</h1>
+
+        <div class="long-box-links">
+
+
+
+            <div class="long-box">
+                <a href="https://play.google.com/store/apps/details?id=com.MangasGames.Mergeandfire">
+                    <img src="images/mergeandfire.png" alt="App Icon">
+                    <div>
+                        <h3>Merge and fire</h3>
+                        <p>Casual</p>
+                        <div class="star-rating">
+                            <img src="images/star.png" alt="Star">
+                            <p>3</p>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+
+            <div class="long-box">
+                <a href="https://play.google.com/store/apps/details?id=com.SuperGem.PaperPlease">
+                    <img src="images/PaperPlease.png" alt="App Icon">
+                    <div>
+                        <h3>Paper Please</h3>
+                        <p>Puzzle</p>
+                        <div class="star-rating">
+                            <img src="images/star.png" alt="Star">
+                            <p>null</p>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+
+            <div class="long-box">
+                <a href="https://play.google.com/store/apps/details?id=com.SUPERGEM.Stealthmaster">
+                    <img src="images/Stealthmaster.png" alt="App Icon">
+                    <div>
+                        <h3>Stealth master</h3>
+                        <p>Puzzle</p>
+                        <div class="star-rating">
+                            <img src="images/star.png" alt="Star">
+                            <p>null</p>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
     </main>
+
     <footer>
         <div class="social-links">
             <a href="https://www.facebook.com/supergemgames" target="_blank" rel="noopener noreferrer"><img src="images/facebook-icon.png" alt="Facebook"></a>
@@ -161,23 +284,5 @@
         </div>
         <p>&copy; 2024 SUPERGEM. All rights reserved.</p>
     </footer>
-
-    <script>document.addEventListener('DOMContentLoaded', function () {
-            // Function to detect if the user is on an iOS device
-            function isiOS() {
-                return /iPhone|iPad|iPod/i.test(navigator.userAgent);
-            }
-
-            if (isiOS()) {
-                document.getElementById('link1').href = 'https://apps.apple.com/us/app/merge-and-fire/id6459738321';
-                document.getElementById('link2').href = 'https://apps.apple.com/us/app/save-the-town-3d/id1547741534';
-                document.getElementById('link3').href = 'https://apps.apple.com/us/app/mongol-meme/id6459738322'; // Example link, replace with the correct one
-                document.getElementById('link4').href = 'https://apps.apple.com/us/app/packing-master-puzzle/id6459738323'; // Example link, replace with the correct one
-                document.getElementById('link5').href = 'https://apps.apple.com/us/app/stealth-master/id6459738324'; // Example link, replace with the correct one
-                document.getElementById('link6').href = 'https://apps.apple.com/us/app/paper-please/id6459738325'; // Example link, replace with the correct one
-                document.getElementById('link7').href = 'https://apps.apple.com/us/app/mongol-meme/id6459738322'; // Example link, replace with the correct one
-                document.getElementById('link8').href = 'https://apps.apple.com/us/app/merge-and-fire/id6459738321'; // Example link, replace with the correct one
-            }
-        });</script>
 </body>
 </html>
