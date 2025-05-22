@@ -2,7 +2,7 @@
   {
     "name": "Merge and Fire",
     "img": "images/mergeandfire.png",
-    "genre": "Puzzle",
+    "genre": "Casual",
     "android": "https://play.google.com/store/apps/details?id=com.MangasGames.Mergeandfire",
     "ios": "https://apps.apple.com/us/app/6459738321",
     "rating": 4.5
@@ -10,7 +10,7 @@
   {
     "name": "Paper Please",
     "img": "images/PaperPlease.png",
-    "genre": "Arcade",
+    "genre": "Puzzle",
     "android": "https://play.google.com/store/apps/details?id=com.SuperGem.PaperPlease",
     "ios": "https://apps.apple.com/us/app/6670699846",
     "rating": 4.2
