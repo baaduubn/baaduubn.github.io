@@ -17,14 +17,14 @@
     "name": "Stealth master",
     "img": "images/Stealthmaster.png",
     "genre": "Puzzle",
-    "rating": 0,
+    "rating": null,
     "android": "https://play.google.com/store/apps/details?id=com.SUPERGEM.Stealthmaster"
   },
   {
     "name": "Blast Goal",
     "img": "images/blastgoal.png",
     "genre": "Puzzle",
-    "rating": 0,
+    "rating": null,
     "android": "https://play.google.com/store/apps/details?id=com.SUPERGEM.Blastgoal"
   }
 ]
