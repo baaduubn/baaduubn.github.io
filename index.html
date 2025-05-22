@@ -231,7 +231,7 @@ const topGames = [
         img: "images/Stealthmaster.png",
         downloads: "100+ downloads",
         android: "https://play.google.com/store/apps/details?id=com.SUPERGEM.Stealthmaster",
-        ios: "https://apps.apple.com/us/app/merge-and-fire/id6459738321"
+        ios: null
     }
 ];
 
@@ -243,9 +243,15 @@ function renderTopGames() {
     const row = document.querySelector('.row');
     row.innerHTML = '';
     topGames.forEach(game => {
+        const isIOS = isiPhone();
+        let storeLink = isIOS ? game.ios : game.android;
+        // If the preferred link is missing/null, use the other one
+        if (!storeLink) {
+            storeLink = isIOS ? game.android : game.ios;
+        }
         const a = document.createElement('a');
         a.id = game.id;
-        a.href = isiPhone() ? game.ios : game.android;
+        a.href = storeLink;
         a.innerHTML = `
             <img src="${game.img}" alt="${game.name}">
             <h3>${game.name}</h3>
@@ -269,9 +275,18 @@ fetch('games.json')
     const container = document.getElementById('all-games');
     container.innerHTML = '';
     games.forEach(game => {
+      // Detect system
+      const isIOS = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent);
+      let storeLink = isIOS ? game.ios : game.android;
+
+      // If the preferred link is missing/null, use the other one
+      if (!storeLink) {
+        storeLink = isIOS ? game.android : game.ios;
+      }
+
       container.innerHTML += `
         <div class="long-box">
-          <a href="${game.android}" target="_blank">
+          <a href="${storeLink}" target="_blank">
             <img src="${game.img}" alt="App Icon">
             <div>
               <h3>${game.name}</h3>

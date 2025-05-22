@@ -2,22 +2,25 @@
   {
     "name": "Merge and Fire",
     "img": "images/mergeandfire.png",
-    "genre": "Casual",
-    "rating": 3.1,
-    "android": "https://play.google.com/store/apps/details?id=com.MangasGames.Mergeandfire"
+    "genre": "Puzzle",
+    "android": "https://play.google.com/store/apps/details?id=com.MangasGames.Mergeandfire",
+    "ios": "https://apps.apple.com/us/app/6459738321",
+    "rating": 4.5
   },
   {
     "name": "Paper Please",
     "img": "images/PaperPlease.png",
-    "genre": "Puzzle",
-    "rating": 3.8,
-    "android": "https://play.google.com/store/apps/details?id=com.SuperGem.PaperPlease"
+    "genre": "Arcade",
+    "android": "https://play.google.com/store/apps/details?id=com.SuperGem.PaperPlease",
+    "ios": "https://apps.apple.com/us/app/6670699846",
+    "rating": 4.2
   },
   {
     "name": "Stealth master",
     "img": "images/Stealthmaster.png",
     "genre": "Puzzle",
     "rating": null,
+    "ios": null,
     "android": "https://play.google.com/store/apps/details?id=com.SUPERGEM.Stealthmaster"
   },
   {
@@ -25,6 +28,7 @@
     "img": "images/blastgoal.png",
     "genre": "Puzzle",
     "rating": null,
+    "ios": null,
     "android": "https://play.google.com/store/apps/details?id=com.SUPERGEM.Blastgoal"
   }
 ]
