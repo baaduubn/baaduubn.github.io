@@ -191,97 +191,11 @@
     <main>
         <h1>TOP GAMES</h1>
         <div class="row">
-            
-            <div class="column">
-                <a id="top2" href="https://play.google.com/store/apps/details?id=com.MangasGames.Mergeandfire">
-                    <img src="images/mergeandfire.png" alt="Merge and Fire">
-                    <h3>Merge and Fire</h3>
-                    <p>5k+ downloads</p>
-                </a>
-            </div>
-            <div class="column">
-                <a id="top3" href="https://play.google.com/store/apps/details?id=com.SuperGem.PaperPlease">
-                    <img src="images/PaperPlease.png" alt="Paper Please">
-                    <h3>Paper Please</h3>
-                    <p>1k+ downloads</p>
-                </a>
-            </div>
-            <div class="column">
-                <a id="top4" href="https://play.google.com/store/apps/details?id=com.SUPERGEM.Stealthmaster">
-                    <img src="images/Stealthmaster.png" alt="Stealth Master">
-                    <h3>Stealth Master</h3>
-                    <p>100+ downloads</p>
-                </a>
-            </div>
-
+            <!-- Top games will be rendered here by JS -->
         </div>
         <h1>ALL GAMES</h1>
 
-        <div class="long-box-links">
-
-
-
-            <div class="long-box">
-                <a href="https://play.google.com/store/apps/details?id=com.MangasGames.Mergeandfire">
-                    <img src="images/mergeandfire.png" alt="App Icon">
-                    <div>
-                        <h3>Merge and fire</h3>
-                        <p>Casual</p>
-                        <div class="star-rating">
-                            <img src="images/star.png" alt="Star">
-                            <p>3</p>
-                        </div>
-
-                    </div>
-                </a>
-            </div>
-
-            <div class="long-box">
-                <a href="https://play.google.com/store/apps/details?id=com.SuperGem.PaperPlease">
-                    <img src="images/PaperPlease.png" alt="App Icon">
-                    <div>
-                        <h3>Paper Please</h3>
-                        <p>Puzzle</p>
-                        <div class="star-rating">
-                            <img src="images/star.png" alt="Star">
-                            <p>3.8</p>
-                        </div>
-
-                    </div>
-                </a>
-            </div>
-
-            <div class="long-box">
-                <a href="https://play.google.com/store/apps/details?id=com.SUPERGEM.Stealthmaster">
-                    <img src="images/Stealthmaster.png" alt="App Icon">
-                    <div>
-                        <h3>Stealth master</h3>
-                        <p>Puzzle</p>
-                        <div class="star-rating">
-                            <img src="images/star.png" alt="Star">
-                            <p>null</p>
-                        </div>
-
-                    </div>
-                </a>
-            </div>
-            <div class="long-box">
-                <a href="https://play.google.com/store/apps/details?id=com.SUPERGEM.Blastgoal">
-                    <img src="images/blastgoal.png" alt="App Icon">
-                    <div>
-                        <h3>Blast Goal</h3>
-                        <p>Puzzle</p>
-                        <div class="star-rating">
-                            <img src="images/star.png" alt="Star">
-                            <p>null</p>
-                        </div>
-
-                    </div>
-                </a>
-            </div>
-           
-
-        </div>
+        <div class="long-box-links" id="all-games"></div>
     </main>
 
     <footer>
@@ -293,25 +207,83 @@
         </div>
         <p>&copy; 2024 SUPERGEM. All rights reserved.</p>
     </footer>
-    <script>function isiPhone() {
-            return /iPhone|iPod|Macintosh/i.test(navigator.userAgent);
-        }
+    <script>
+const topGames = [
+    {
+        id: "top2",
+        name: "Merge and Fire",
+        img: "images/mergeandfire.png",
+        downloads: "5k+ downloads",
+        android: "https://play.google.com/store/apps/details?id=com.MangasGames.Mergeandfire",
+        ios: "https://apps.apple.com/us/app/6459738321"
+    },
+    {
+        id: "top3",
+        name: "Paper Please",
+        img: "images/PaperPlease.png",
+        downloads: "1k+ downloads",
+        android: "https://play.google.com/store/apps/details?id=com.SuperGem.PaperPlease",
+        ios: "https://apps.apple.com/us/app/6670699846"
+    },
+    {
+        id: "top4",
+        name: "Stealth Master",
+        img: "images/Stealthmaster.png",
+        downloads: "100+ downloads",
+        android: "https://play.google.com/store/apps/details?id=com.SUPERGEM.Stealthmaster",
+        ios: "https://apps.apple.com/us/app/merge-and-fire/id6459738321"
+    }
+];
 
-        function updateTopGameLinks() {
-            if (isiPhone()) {
-              
-                document.getElementById("top2").href = "https://apps.apple.com/us/app/6459738321";
-                document.getElementById("top3").href = "https://apps.apple.com/us/app/6670699846";
-                document.getElementById("top4").href = "https://apps.apple.com/us/app/merge-and-fire/id6459738321";
-            } else {
-              
-                document.getElementById("top2").href = "https://www.appbrain.com/app/save-the-town-3d/com.SaveTheTown.gp";
-                document.getElementById("top3").href = "https://play.google.com/store/apps/details?id=com.SUPERGEM.Stealthmaster";
-                document.getElementById("top4").href = "https://play.google.com/store/apps/details?id=com.SuperGem.PaperPlease";
-            }
-        }
+function isiPhone() {
+    return /iPhone|iPod|Macintosh/i.test(navigator.userAgent);
+}
 
-        window.onload = updateTopGameLinks;</script>
+function renderTopGames() {
+    const row = document.querySelector('.row');
+    row.innerHTML = '';
+    topGames.forEach(game => {
+        const a = document.createElement('a');
+        a.id = game.id;
+        a.href = isiPhone() ? game.ios : game.android;
+        a.innerHTML = `
+            <img src="${game.img}" alt="${game.name}">
+            <h3>${game.name}</h3>
+            <p>${game.downloads}</p>
+        `;
+        const div = document.createElement('div');
+        div.className = 'column';
+        div.appendChild(a);
+        row.appendChild(div);
+    });
+}
+
+window.onload = renderTopGames;
+
+fetch('games.json')
+  .then(response => response.json())
+  .then(games => {
+    const container = document.getElementById('all-games');
+    container.innerHTML = '';
+    games.forEach(game => {
+      container.innerHTML += `
+        <div class="long-box">
+          <a href="${game.android}" target="_blank">
+            <img src="${game.img}" alt="App Icon">
+            <div>
+              <h3>${game.name}</h3>
+              <p>${game.genre}</p>
+              <div class="star-rating">
+                <img src="images/star.png" alt="Star">
+                <p>${game.rating !== null ? game.rating : ''}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      `;
+    });
+  });
+</script>
 
 
 </body>
