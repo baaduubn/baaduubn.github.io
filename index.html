@@ -230,6 +230,9 @@
                     <li><a href="#home">Games</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="privacy.html">Privacy</a></li>
+                    <li>
+                        <a href="add-edit.html">Login</a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -241,8 +244,8 @@
             <!-- Top games will be rendered here by JS -->
         </div>
         <h1>ALL GAMES</h1>
-
         <div class="long-box-links" id="all-games"></div>
+
     </main>
 
     <footer>
@@ -308,44 +311,58 @@ function renderTopGames() {
 
 window.onload = renderTopGames;
 
-fetch('games.json')
-  .then(response => {
-    if (!response.ok) throw new Error('Network response was not ok');
-    return response.json();
-  })
-  .then(games => {
-    const container = document.getElementById('all-games');
-    container.innerHTML = '';
-    games.forEach(game => {
-      // Detect system
-      const isIOS = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent);
-      let storeLink = isIOS ? game.ios : game.android;
 
-      // If the preferred link is missing/null, use the other one
-      if (!storeLink) {
-        storeLink = isIOS ? game.android : game.ios;
-      }
+// Fetch game data from Google Sheets using opensheet.elk.sh
 
-      container.innerHTML += `
-        <div class="long-box">
-          <a href="${storeLink}" target="_blank">
-            <img src="${game.img}" alt="App Icon">
-            <div>
-              <h3>${game.name}</h3>
-              <p>${game.genre}</p>
-              <div class="star-rating">
-                <img src="images/star.png" alt="Star">
-                <p>${game.rating !== null ? game.rating : ''}</p>
-              </div>
-            </div>
-          </a>
-        </div>
-      `;
-    });
-  })
-  .catch(error => {
-    console.error('Error loading games.json:', error);
-  });
+
+// Fetch game data from SheetDB.io API
+function fetchSheetDBData() {
+    const url = 'https://sheetdb.io/api/v1/1rkz907ehzww4';
+    fetch(url)
+        .then(response => response.json())
+        .then(games => {
+            console.log('Fetched games data:', games);
+            const container = document.getElementById('all-games');
+            container.innerHTML = '';
+            if (!Array.isArray(games) || games.length === 0) {
+                container.innerHTML = '<p style="color:red">No game data found. Check your SheetDB.io sheet and column names.</p>';
+                return;
+            }
+            games.forEach(game => {
+                // Detect system
+                const isIOS = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent);
+                let storeLink = isIOS ? game.ios : game.android;
+                if (!storeLink) {
+                    storeLink = isIOS ? game.android : game.ios;
+                }
+                container.innerHTML += `
+                    <div class="long-box">
+                        <a href="${storeLink}" target="_blank">
+                            <img src="${game.img}" alt="App Icon">
+                            <div>
+                                <h3>${game.name}</h3>
+                                <p>${game.genre}</p>
+                                <div class="star-rating">
+                                    <img src="images/star.png" alt="Star">
+                                    <p>${game.rating !== null ? game.rating : ''}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                `;
+            });
+        })
+        .catch(error => {
+            console.error('Error loading SheetDB.io:', error);
+            const container = document.getElementById('all-games');
+            container.innerHTML = `<p style='color:red'>Error loading SheetDB.io: ${error.message}</p>`;
+        });
+}
+
+window.onload = function() {
+    renderTopGames();
+    fetchSheetDBData();
+};
 
         // Responsive menu toggle
         document.querySelector('.menu-toggle').addEventListener('click', function() {

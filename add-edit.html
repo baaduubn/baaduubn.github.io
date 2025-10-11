@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add/Edit Game Data</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { background: #f0f0f0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .main-flex {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: 40px auto;
+            gap: 30px;
+        }
+        .form-panel {
+            flex: 1 1 350px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            min-width: 320px;
+        }
+        .table-panel {
+            flex: 2 1 500px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            min-width: 320px;
+            overflow-x: auto;
+        }
+        h2 { text-align: center; }
+        label { display: block; margin-top: 15px; }
+        input, select { width: 100%; padding: 8px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc; }
+        button { margin-top: 20px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #444; }
+        .message { margin-top: 20px; text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 8px 10px; border-bottom: 1px solid #eee; text-align: left; }
+        th { background: #f7f7f7; }
+        tr:hover { background: #f0f8ff; }
+        @media (max-width: 900px) {
+            .main-flex { flex-direction: column; }
+            .form-panel, .table-panel { min-width: unset; }
+        }
+    </style>
+</head>
+    <body>
+    <div id="password-overlay" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(240,240,240,0.98);z-index:9999;display:flex;align-items:center;justify-content:center;">
+        <div style="background:#fff;padding:40px 30px;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,0.1);text-align:center;">
+            <h2>Admin Access</h2>
+            <input type="password" id="adminPassword" placeholder="Enter password" style="padding:10px;width:80%;margin-bottom:20px;border-radius:5px;border:1px solid #ccc;">
+            <br>
+            <button onclick="checkPassword()" style="padding:10px 30px;background:#333;color:#fff;border:none;border-radius:5px;cursor:pointer;">Login</button>
+            <div id="passwordMsg" style="margin-top:15px;color:#c00;"></div>
+        </div>
+    </div>
+    <div class="main-flex" style="display:none;" id="mainContent">
+        <div class="form-panel">
+            <h2>Add / Edit Game</h2>
+            <form id="gameForm">
+                <input type="hidden" id="id" name="id">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="imgUpload">Image Upload</label>
+                <input type="file" id="imgUpload" accept="image/*">
+                <input type="hidden" id="img" name="img" required>
+                <small id="imgUploadMsg" style="color:#666;"></small>
+
+                <label for="genre">Genre</label>
+                <select id="genre" name="genre" required>
+                    <option value="">Select genre</option>
+                    <option value="Action">Action</option>
+                    <option value="Adventure">Adventure</option>
+                    <option value="Puzzle">Puzzle</option>
+                    <option value="Strategy">Strategy</option>
+                    <option value="Arcade">Arcade</option>
+                    <option value="Simulation">Simulation</option>
+                    <option value="RPG">RPG</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Casual">Casual</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="rating">Rating</label>
+                <input type="number" step="0.1" min="0" max="5" id="rating" name="rating" required>
+
+                <label for="android">Android Link</label>
+                <input type="text" id="android" name="android">
+
+                <label for="ios">iOS Link</label>
+                <input type="text" id="ios" name="ios">
+
+                <button type="submit">Submit</button>
+            </form>
+            <div class="message" id="message"></div>
+        </div>
+        <div class="table-panel">
+            <h3 style="text-align:center;">Existing Games</h3>
+            <div id="gamesList"></div>
+        </div>
+    </div>
+    <script>
+    // Simple password protection
+    const ADMIN_PASSWORD = 'supergem2025'; // Change this to your desired password
+    function checkPassword() {
+        const input = document.getElementById('adminPassword').value;
+        if (input === ADMIN_PASSWORD) {
+            document.getElementById('password-overlay').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'flex';
+        } else {
+            document.getElementById('passwordMsg').textContent = 'Incorrect password.';
+        }
+    }
+    // Allow Enter key to submit password
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('adminPassword').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') checkPassword();
+        });
+    });
+    const SHEETDB_API = 'https://sheetdb.io/api/v1/1rkz907ehzww4';
+
+    // Load existing games and track max id
+    function loadGames() {
+        fetch(SHEETDB_API)
+            .then(response => response.json())
+            .then(games => {
+                const list = document.getElementById('gamesList');
+                if (!Array.isArray(games) || games.length === 0) {
+                    list.innerHTML = '<p>No games found.</p>';
+                    window._gamesCache = [];
+                    window._maxGameId = 0;
+                    return;
+                }
+                let html = '<table style="width:100%;border-collapse:collapse;">';
+                html += '<tr style="background:#eee;"><th>ID</th><th>Name</th><th>Genre</th><th>Rating</th><th>Edit</th><th>Delete</th></tr>';
+                let maxId = 0;
+                games.forEach(game => {
+                    let numId = parseInt(game.id);
+                    if (!isNaN(numId) && numId > maxId) maxId = numId;
+                    html += `<tr>
+                        <td>${game.id || ''}</td>
+                        <td>${game.name || ''}</td>
+                        <td>${game.genre || ''}</td>
+                        <td>${game.rating || ''}</td>
+                        <td><button onclick="fillForm('${game.id}')">Edit</button></td>
+                        <td><button style='background:#c00;color:#fff;' onclick="deleteGame('${game.id}')">Delete</button></td>
+                    </tr>`;
+                });
+                html += '</table>';
+    // Delete game by id
+    window.deleteGame = function(id) {
+        if (!confirm('Are you sure you want to delete this game?')) return;
+        fetch(`${SHEETDB_API}/id/${id}`, {
+            method: 'DELETE',
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.deleted) {
+                document.getElementById('message').textContent = 'Game deleted successfully!';
+                loadGames();
+            } else {
+                document.getElementById('message').textContent = 'Error: Could not delete game.';
+            }
+        })
+        .catch(error => {
+            document.getElementById('message').textContent = 'Error: ' + error.message;
+        });
+    }
+                list.innerHTML = html;
+                window._gamesCache = games;
+                window._maxGameId = maxId;
+            });
+    }
+
+    // Fill form for editing
+    window.fillForm = function(id) {
+        const game = (window._gamesCache || []).find(g => g.id == id);
+        if (!game) return;
+        document.getElementById('id').value = game.id || '';
+        document.getElementById('name').value = game.name || '';
+        document.getElementById('img').value = game.img || '';
+        document.getElementById('genre').value = game.genre || '';
+        document.getElementById('rating').value = game.rating || '';
+        document.getElementById('android').value = game.android || '';
+        document.getElementById('ios').value = game.ios || '';
+        document.getElementById('name').focus();
+    }
+
+    // Cloudinary upload config
+    const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dgqjsbjqx/image/upload';
+    const CLOUDINARY_PRESET = 'webpage';
+
+    document.getElementById('imgUpload').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        document.getElementById('imgUploadMsg').textContent = 'Uploading image...';
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', CLOUDINARY_PRESET);
+        fetch(CLOUDINARY_URL, {
+            method: 'POST',
+            body: formData
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (data.secure_url) {
+                document.getElementById('img').value = data.secure_url;
+                document.getElementById('imgUploadMsg').textContent = 'Image uploaded!';
+            } else {
+                document.getElementById('imgUploadMsg').textContent = 'Upload failed.';
+            }
+        })
+        .catch(() => {
+            document.getElementById('imgUploadMsg').textContent = 'Upload failed.';
+        });
+    });
+
+    document.getElementById('gameForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const form = e.target;
+        let id = form.id.value.trim();
+        // Auto-generate simple numeric id if blank
+        if (!id) {
+            id = (window._maxGameId || 0) + 1;
+        }
+        const data = {
+            id: id,
+            name: form.name.value,
+            img: form.img.value,
+            genre: form.genre.value,
+            rating: form.rating.value,
+            android: form.android.value,
+            ios: form.ios.value
+        };
+        document.getElementById('message').textContent = 'Submitting...';
+        // If editing, use PUT; if adding, use POST
+        if (form.id.value.trim()) {
+            // Edit existing game
+            fetch(`${SHEETDB_API}/id/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ data })
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.updated) {
+                    document.getElementById('message').textContent = 'Game updated successfully!';
+                    form.reset();
+                    loadGames();
+                } else {
+                    document.getElementById('message').textContent = 'Error: Could not update game.';
+                }
+            })
+            .catch(error => {
+                document.getElementById('message').textContent = 'Error: ' + error.message;
+            });
+        } else {
+            // Add new game (with auto id)
+            fetch(SHEETDB_API, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ data })
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.created) {
+                    document.getElementById('message').textContent = 'Game added successfully!';
+                    form.reset();
+                    loadGames();
+                } else {
+                    document.getElementById('message').textContent = 'Error: Could not add game.';
+                }
+            })
+            .catch(error => {
+                document.getElementById('message').textContent = 'Error: ' + error.message;
+            });
+        }
+    });
+
+    // Initial load
+    loadGames();
+    </script>
+</body>
+</html>
