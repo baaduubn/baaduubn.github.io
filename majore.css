@@ -1,0 +1,46 @@
+/* majore.css: Main site-wide styles for navigation, footer, and layout */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body, html {
+    overflow-x: hidden;
+}
+header {
+    margin: 0;
+    padding: 20px;
+    background-color: #43b0c6;
+    text-align: center;
+}
+nav {
+    margin-top: 20px;
+}
+.navbar {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.navbar li {
+    margin: 0 15px;
+}
+.navbar a {
+    color: #333333;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.navbar a:hover {
+    text-decoration: underline;
+}
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #26af9f;
+    color: #ffffff;
+    text-align: center;
+}

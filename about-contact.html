@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About & Contact | SUPERGEM</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    
+    <main>
+     
+        
+         
+      <div class="about-team-info">
+              <img src="images/business-team-portrait.png" alt="Team Icon" class="about-card-icon team-image" style="width: 500px; height: auto;" />
+             
+              <ul>
+              <li><strong>Game Designers:</strong> Engaging stories & gameplay.</li>
+              <li><strong>Developers:</strong> Seamless programming.</li>
+              <li><strong>Artists & Animators:</strong> Breathtaking visuals.</li>
+              <li><strong>Sound Engineers:</strong> Immersive soundscapes.</li>
+              <li><strong>QA Testers:</strong> Polished, bug-free games.</li>
+              </ul>
+         
+       
+         
+          
+         
+        </div>
+        <section class="contact-card">
+            <div class="contact-container">
+                <div class="contact-details">
+                    <h2>Our Location 📍</h2>
+                    <p>Chingeltei District 5th horoo, J.Sambuu St, Ulaanbaatar 15141</p>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12196.1725487017!2d106.91922519950838!3d47.91923575238225!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d96925ec82893c3%3A0x90ff041e1f8e024b!2sTengis%20Movie%20Theater!5e1!3m2!1sen!2smn!4v1760203845497!5m2!1sen!2smn" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h2>Contact Us 💬</h2>
+                    <form id="contact-form">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required />
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required />
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <button type="submit">Send Message 🚀</button>
+                    </form>
+                    <div id="form-message"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script>
+    (function() {
+      emailjs.init('KQk8MIMrCwyNER1Ea');
+    })();
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      emailjs.sendForm('service_jqvwpoo', 'template_0jizpbd', this)
+        .then(() => {
+          document.getElementById('form-message').innerText = '✅ Message sent successfully!';
+          this.reset();
+        }, (error) => {
+          document.getElementById('form-message').innerText = '❌ Failed to send: ' + error.text;
+          document.getElementById('form-message').style.color = '#dc3545';
+        });
+    });
+    fetch('header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+        const menuToggle = document.querySelector('.menu-toggle');
+        if (menuToggle) {
+          menuToggle.addEventListener('click', function() {
+            document.querySelector('.navbar').classList.toggle('open');
+          });
+        }
+      });
+    fetch('footer.html')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text();
+      })
+      .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error loading footer:', error);
+        document.getElementById('footer-placeholder').innerHTML = '<div style="color:red;">Footer failed to load.</div>';
+      });
+    </script>
+</body>
+</html>
