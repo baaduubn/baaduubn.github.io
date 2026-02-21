@@ -109,6 +109,7 @@ function fetchSheetDBData() {
         .then(response => response.json())
         .then(games => {
             console.log('Fetched games data:', games);
+             games.sort((a, b) => parseInt(b.id) - parseInt(a.id));
             const container = document.getElementById('all-games');
             container.innerHTML = '';
             if (!Array.isArray(games) || games.length === 0) {
