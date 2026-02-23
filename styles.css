@@ -17,6 +17,7 @@ body, html {
     overflow-x: hidden;
 }
 header {
+    font-family: 'Bahnschrift Condensed', 'Bahnschrift', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 20px;
     background-color: #283a55; /* Dark background */
@@ -166,6 +167,7 @@ main {
     margin-right: 2px;
 }
 footer {
+    font-family: 'Bahnschrift Condensed', 'Bahnschrift', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-top: 40px;
     padding: 20px;
     background-color: #283a55;
