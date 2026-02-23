@@ -1,5 +1,5 @@
 body {
-  font-family: "Open Sans", Arial, sans-serif;
+  font-family: 'Bahnschrift Condensed', 'Bahnschrift', Arial, sans-serif;
   min-height: 100vh;
   background-color: #ffffff;
   color: #ffffff;
@@ -11,7 +11,7 @@ body {
     padding: 0;
     background-color: #F5F7FA; /* Light grey background */
     color: #333333; /* Darker grey font color */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font family */
+    font-family: 'Bahnschrift Condensed', 'Bahnschrift', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font family */
 }
 body, html {
     overflow-x: hidden;
@@ -39,7 +39,7 @@ nav {
     color: #ffffff;
     text-decoration: none;
     font-weight: bold;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Bahnschrift Condensed', 'Bahnschrift', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .navbar a:hover {
     text-decoration: underline;
