@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap');
+
 body {
   font-family: 'Bahnschrift Condensed', 'Bahnschrift', Arial, sans-serif;
   min-height: 100vh;
@@ -17,7 +19,7 @@ body, html {
     overflow-x: hidden;
 }
 header {
-    font-family: 'Bahnschrift Condensed', 'Bahnschrift', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Oswald', 'Bahnschrift Condensed', 'Bahnschrift', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 20px;
     background-color: #283a55; /* Dark background */
@@ -167,7 +169,7 @@ main {
     margin-right: 2px;
 }
 footer {
-    font-family: 'Bahnschrift Condensed', 'Bahnschrift', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Oswald', 'Bahnschrift Condensed', 'Bahnschrift', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-top: 40px;
     padding: 20px;
     background-color: #283a55;
